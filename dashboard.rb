@@ -10,7 +10,6 @@ class Dashboard < Sinatra::Base
   get("/") do
     @ip = request.ip
     @geolocation = Geolocation.new(@ip)
-    erb :dashboard
 
     latitude = @geolocation.latitude
     longitude = @geolocation.longitude
@@ -20,5 +19,7 @@ class Dashboard < Sinatra::Base
 
     response = HTTParty.get(url)
     @weather_data = JSON.parse(response.body)["currently"]
+
+    erb :dashboard
   end
 end
