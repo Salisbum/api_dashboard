@@ -13,10 +13,34 @@
     <p>
       <ul>
         <li> Summary: <%= @weather_data["summary"] %>
+        </li>
         <li> Likelihood of Precipitation: <%= @weather_data["precipProbability"] * 100 %>%
+        </li>
         <li> Type of Precipitation: <%= @weather_data["precipType"].capitalize %>
+        </li>
         <li> Temperature (°F): <%= @weather_data["temperature"] %>
+        </li>
       </ul>
     </p>
   </div>
+
+  <div class="callout primary">
+    <h3>Movies</h3>
+    <p>
+        <% @movies.each do |movie| %>
+        <strong>Movie: <%= movie["title"] %></strong>
+        <br>
+        <strong>Showtimes:</strong> <% movie["showtimes"].each do |showtime|%>
+          <ul>
+            <li> Theatre: <%= showtime["theatre"]["name"] %>
+            </li>
+            <li> Time: <%= showtime["dateTime"] %>
+            </li>
+          </ul>
+          <% end %>
+          <br>
+        <% end %>
+    </p>
+  </div>
+
 </div>
